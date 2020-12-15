@@ -18,7 +18,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
       //AppBar
       appBar: AppBar(
-        title: Text('Profile Screen'),
+        title: Text('Profile Screen1'),
         centerTitle: true,
         //Home Button
         leading: IconButton(
