@@ -12,15 +12,9 @@ class _DataScreenState extends State<DataScreen> {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
-
-      //AppBar
-      // appBar: AppBar(
-      //   title: Text('Data Screen'),
-      //   centerTitle: true,
-      // ),
       body: CustomScrollView(
         slivers: [
-
+          //App Bar
           SliverAppBar(
             leading: Icon(Icons.menu_rounded),
             title: Text('Data Screen'),
@@ -28,14 +22,7 @@ class _DataScreenState extends State<DataScreen> {
               title: Text('Data Screen.'),
             ),
           ),
-
-          //this can be used as month indicator in list
-          SliverToBoxAdapter(
-            child: Container(
-              child: Text("Test Header"),
-            ),
-          ),
-
+          //List
           SliverFixedExtentList(
             itemExtent: 170,
             delegate: SliverChildListDelegate([
@@ -62,7 +49,6 @@ class _DataScreenState extends State<DataScreen> {
               ),
             ]),
           ),
-
         ],
       ),
     );

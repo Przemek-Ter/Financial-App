@@ -2,16 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 //Dependencies
-import 'package:date_time_picker/date_time_picker.dart';
-import 'package:project_app2/widgets/addButton.dart';
-
-//Functionalities
-import 'package:project_app2/widgets/categories.dart';
-
+import 'package:project_app2/widgets/add_Button.dart';
 
 //Pages
 import 'package:project_app2/pages/profile_Screen.dart';
-import 'package:project_app2/pages/DataScreen.dart';
+import 'package:project_app2/pages/data_Screen.dart';
 
 
 class MyBottomNavigationBar extends StatefulWidget {
@@ -28,36 +23,20 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
     DataScreen(),
   ];
 
-  //Values for adding data
-  double amount = 0;
-  int taxValue = 23;
-
-  //Values for choosing category
-  CategoriesScroller categoryScroller = CategoriesScroller();
-  int categoryNumber;
-
-  //Value for choosing date and time
-  String selectedTime = '';
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-      //Pages
+      //Page field
       body: pagesList[currentPage],
 
       //Navigation Bar
       bottomNavigationBar: BottomNavigationBar(
-        //Setting page
         onTap: (index) {
           setState(() {
             currentPage = index;
-
           });
         },
         currentIndex: currentPage,
-        //List of buttons in bar
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.perm_identity),
@@ -70,13 +49,10 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
         ],
       ),
 
-      //Main Button
+      //Add button
       floatingActionButton: AddButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
-
-  //Functions
-
 
 }
