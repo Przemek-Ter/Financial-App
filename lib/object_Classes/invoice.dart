@@ -1,13 +1,12 @@
 
-import 'package:project_app2/object_Classes/category.dart';
-
 class Invoice {
   double amountValue;
   int taxValue;
-  Category category;
+  int categoryNumber;
+  String categoryName;
   String date;
 
-  Invoice(this.amountValue, this.taxValue, this.category, this.date);
+  Invoice(this.amountValue, this.taxValue, this.categoryNumber, this.categoryName, this.date);
 
   //Getters
   double getAmountValue() {
@@ -18,8 +17,12 @@ class Invoice {
     return this.taxValue;
   }
 
-  Category getCategory() {
-    return this.category;
+  int getCategoryNumber() {
+    return this.categoryNumber;
+  }
+
+  String getCategoryName() {
+    return this.categoryName;
   }
 
   String getDate() {
@@ -35,8 +38,8 @@ class Invoice {
     this.taxValue = taxValue;
   }
 
-  void setCategory(Category category) {
-    this.category = category;
+  void setCategory(int categoryNumber) {
+    this.categoryNumber = categoryNumber;
   }
 
   void setDate(String date) {
@@ -45,6 +48,6 @@ class Invoice {
 
   @override
   String toString() {
-    return 'Invoice{amountValue: $amountValue, taxValue: $taxValue, Category: {indexNumber: ${category.indexNumber}, name: ${category.name}}, date: $date}';
+    return 'Invoice{amountValue: $amountValue, taxValue: $taxValue, categoryNumber: $categoryNumber, categoryName: $categoryName, date: $date}';
   }
 }

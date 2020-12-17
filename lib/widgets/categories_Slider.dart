@@ -6,6 +6,7 @@ class CategoriesSlider extends StatelessWidget {
   //Category
   Category category = new Category(1, 'No Category');
 
+  //Constructor
   CategoriesSlider({this.category});
 
   @override
@@ -23,8 +24,10 @@ class CategoriesSlider extends StatelessWidget {
                 icon: Icon(Icons.fastfood_rounded),
                 iconSize: 50,
                 onPressed: () {
-                  Category tmpCategory = new Category(1, 'Food');
-                  category = tmpCategory;
+                  category.indexNumber = 1;
+                  category.name = 'Food';
+                  // Category tmpCategory = new Category(1, 'Food');
+                  // category = tmpCategory;
                   print('Category named ${category.name}, and number ${category.indexNumber} was pressed');
                 },
             ),

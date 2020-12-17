@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:date_time_picker/date_time_picker.dart';
-import 'package:project_app2/object_Classes/category.dart';
 import 'package:project_app2/object_Classes/invoice.dart';
 
-//My Imports
-import 'categories_Slider.dart';
+
 
 class AddButton extends StatefulWidget {
   @override
@@ -14,11 +12,10 @@ class AddButton extends StatefulWidget {
 class _AddButtonState extends State<AddButton> {
 
   //Category field
-  CategoriesSlider categorySlider = CategoriesSlider();
+    int categoryNumber = 0;
 
   //Invoice
-  Invoice invoice = new Invoice(0, 23, new Category(0, 'No Category'), 'No Date');
-
+  Invoice invoice = new Invoice(1, 23, 0, 'No Category', 'No Date');
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +35,7 @@ class _AddButtonState extends State<AddButton> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 10),
+            SizedBox(height: 30),
 
             //Amount field
             Container(
@@ -61,41 +58,80 @@ class _AddButtonState extends State<AddButton> {
 
             SizedBox(height: 10),
 
-            //Tax Field
-            Container(
-              margin: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-              color: Colors.orange,
-              child: DropdownButton(
-                  value: invoice.taxValue,
-                  items: [
-                    DropdownMenuItem(
-                      child: Text("23 %"),
-                      value: 23,
-                    ),
-                    DropdownMenuItem(
-                      child: Text("8 %"),
-                      value: 8,
-                    ),
-                    DropdownMenuItem(
-                        child: Text("0 %"),
-                        value: 0
-                    ),
-                  ],
-                  onChanged: (value) {
-                    setState(() {
-                      invoice.taxValue = value;
-                      print('tax value is ${invoice.taxValue}');
-                    });
-                  }),
-            ),
+            //Tax and Category fields
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                //Tax Field
+                Container(
+                  margin: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                  color: Colors.orange,
+                  child: DropdownButton(
+                      value: invoice.taxValue,
+                      items: [
+                        DropdownMenuItem(
+                          child: Text("23 %"),
+                          value: 23,
+                        ),
+                        DropdownMenuItem(
+                          child: Text("8 %"),
+                          value: 8,
+                        ),
+                        DropdownMenuItem(
+                            child: Text("0 %"),
+                            value: 0
+                        ),
+                      ],
+                      onChanged: (value) {
+                        setState(() {
+                          invoice.taxValue = value;
+                          print('tax value is ${invoice.taxValue}');
+                        });
+                      }),
+                ),
 
-            SizedBox(height: 10),
+                SizedBox(width: 10),
 
-            //Category field
-            Container(
-              margin: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-              color: Colors.orange,
-              child: categorySlider,
+                //Category field
+                Container(
+                  margin: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                  color: Colors.orange,
+                  child: DropdownButton(
+                    value: invoice.categoryNumber,
+                    items: [
+                      DropdownMenuItem(
+                        child: Text('Category'),
+                        value: 0,
+                      ),
+                      DropdownMenuItem(
+                        child: Text('Category 1'),
+                        value: 1,
+                      ),
+                      DropdownMenuItem(
+                        child: Text('Category 2'),
+                        value: 2,
+                      ),
+                    ],
+                    onChanged: (tmpNumber){
+                      setState(() {
+                        invoice.categoryNumber = tmpNumber;
+                        switch (tmpNumber){
+                          case 0:
+                            invoice.categoryName = 'No Category';
+                            break;
+                          case 1:
+                            invoice.categoryName = 'Category 1';
+                            break;
+                          case 2:
+                            invoice.categoryName = 'Category 2';
+                            break;
+                        }
+                        print('Category #${invoice.categoryNumber} named - ${invoice.categoryName} was pressed');
+                      });
+                    },
+                  ),
+                ),
+              ],
             ),
 
             SizedBox(height: 10),
