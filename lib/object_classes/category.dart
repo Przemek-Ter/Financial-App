@@ -1,10 +1,18 @@
+import 'package:project_app2/object_Classes/invoice.dart';
+
 class Category {
   int indexNumber;
   String name;
+  List<Invoice> invoiceList;
 
   Category (int indexNumber, String name) {
     this.indexNumber = indexNumber;
     this.name = name;
+  }
+
+  //Methods
+  void addInvoice(Invoice invoice) {
+    invoiceList.add(invoice);
   }
 
   //Getters

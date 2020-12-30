@@ -1,21 +1,54 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:date_time_picker/date_time_picker.dart';
-import 'package:project_app2/object_Classes/invoice.dart';
-
-
+import 'package:project_app2/object_classes/category.dart';
+import 'package:project_app2/object_classes/invoice.dart';
+import 'package:image_picker/image_picker.dart';
 
 class AddButton extends StatefulWidget {
   @override
   _AddButtonState createState() => _AddButtonState();
 }
 
+//Category List (from Database)
+List<Category> categoryList = [
+  new Category(0, 'No Category'),
+  new Category(1, 'Food'),
+  new Category(2, 'Car'),
+  new Category(3, 'Materials'),
+];
+
+//Invoice
+Category tmpCategory = new Category(1, 'Category 1');
+Invoice invoice = new Invoice(0, 0, 'No Date', 0);
+
+
 class _AddButtonState extends State<AddButton> {
 
-  //Category field
-    int categoryNumber = 0;
 
-  //Invoice
-  Invoice invoice = new Invoice(1, 23, 0, 'No Category', 'No Date');
+  //Image Picker
+  final picker = ImagePicker();
+  File tmpImage;
+  void openGallery() async {
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+    setState(() {
+      if (pickedFile != null) {
+        tmpImage =File(pickedFile.path);
+      }else {
+        print('No Image Selected!');
+      }
+    });
+  }
+  void openCamera() async{
+    final pickedFile = await picker.getImage(source: ImageSource.camera);
+    setState(() {
+      if (pickedFile != null) {
+        tmpImage =File(pickedFile.path);
+      }else {
+        print('No Image Selected!');
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +59,7 @@ class _AddButtonState extends State<AddButton> {
       },
     );
   }
+
 
   void addDataMenu(context) {
     showModalBottomSheet(context: context, builder: (BuildContext bc) {
@@ -40,7 +74,7 @@ class _AddButtonState extends State<AddButton> {
             //Amount field
             Container(
               margin: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-              color: Colors.orange,
+              color: Colors.grey[300],
               child: TextField(
                 keyboardType: TextInputType.number,
                 textAlign: TextAlign.center,
@@ -65,7 +99,7 @@ class _AddButtonState extends State<AddButton> {
                 //Tax Field
                 Container(
                   margin: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                  color: Colors.orange,
+                  color: Colors.grey[300],
                   child: DropdownButton(
                       value: invoice.taxValue,
                       items: [
@@ -95,7 +129,7 @@ class _AddButtonState extends State<AddButton> {
                 //Category field
                 Container(
                   margin: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                  color: Colors.orange,
+                  color: Colors.grey[300],
                   child: DropdownButton(
                     value: invoice.categoryNumber,
                     items: [
@@ -112,23 +146,11 @@ class _AddButtonState extends State<AddButton> {
                         value: 2,
                       ),
                     ],
-                    onChanged: (tmpNumber){
-                      setState(() {
-                        invoice.categoryNumber = tmpNumber;
-                        switch (tmpNumber){
-                          case 0:
-                            invoice.categoryName = 'No Category';
-                            break;
-                          case 1:
-                            invoice.categoryName = 'Category 1';
-                            break;
-                          case 2:
-                            invoice.categoryName = 'Category 2';
-                            break;
-                        }
-                        print('Category #${invoice.categoryNumber} named - ${invoice.categoryName} was pressed');
-                      });
-                    },
+                    onChanged: (tmpNumber) {
+                      invoice.categoryNumber = tmpNumber;
+                      print(
+                          'Category #$tmpNumber and named ${categoryList[tmpNumber].name} was pressed');
+                    }
                   ),
                 ),
               ],
@@ -139,7 +161,7 @@ class _AddButtonState extends State<AddButton> {
             //Date Time field
             Container(
               margin: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-              color: Colors.orange,
+              color: Colors.grey[300],
               child: DateTimePicker(
                 type: DateTimePickerType.dateTimeSeparate,
                 dateMask: 'd MMM, yyyy',
@@ -159,17 +181,49 @@ class _AddButtonState extends State<AddButton> {
 
             SizedBox(height: 10),
 
+            //Add Photo
+            Container(
+                margin: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                child: Column(
+                  children: [
+                    Text('Add photo from:'),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        FlatButton(
+                          child: Text('Gallery'),
+                          color: Colors.grey[400],
+                          onPressed: () {
+                            openGallery();
+                          },
+                        ),
+                        SizedBox(width: 30,),
+                        FlatButton(
+                          child: Text('Camera'),
+                          color: Colors.grey[400],
+                          onPressed: () {
+                            openCamera();
+                          },
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+            ),
+
+            SizedBox(height: 10),
+
             //Submit button
             Container(
               margin: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-              color: Colors.orange,
               child: FlatButton(
                 child: Text('SUBMIT'),
                 color: Colors.blue,
                 onPressed: () {
+                  //Print in Terminal
                   print(invoice.toString());
+                  //Exit popup menu
                   Navigator.of(context).pop();
-                  //Sending data to database
                 },
               ),
             )
