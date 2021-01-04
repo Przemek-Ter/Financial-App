@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:date_time_picker/date_time_picker.dart';
+import 'package:project_app2/main.dart';
 import 'package:project_app2/object_classes/category.dart';
 import 'package:project_app2/object_classes/invoice.dart';
 import 'package:image_picker/image_picker.dart';
@@ -220,6 +221,8 @@ class _AddButtonState extends State<AddButton> {
                 child: Text('SUBMIT'),
                 color: Colors.blue,
                 onPressed: () {
+                  //Add to category
+                  categoriesList.addToCategory(invoice, invoice.categoryNumber);
                   //Print in Terminal
                   print(invoice.toString());
                   //Exit popup menu
