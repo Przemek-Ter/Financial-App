@@ -9,40 +9,6 @@ class Invoice {
 
   Invoice(this.amountValue, this.taxValue, this.date, this.categoryNumber,{this.photo});
 
-  //Getters
-  double getAmountValue() {
-    return this.amountValue;
-  }
-
-  int getTaxValue() {
-    return this.taxValue;
-  }
-
-  String getDate() {
-    return this.date;
-  }
-
-  int getCategoryNumber() {
-    return this.categoryNumber;
-  }
-
-  //Setters
-  void setAmountValue(double amountValue) {
-    this.amountValue = amountValue;
-  }
-
-  void setTaxValue(int taxValue) {
-    this.taxValue = taxValue;
-  }
-
-  void setDate(String date) {
-    this.date = date;
-  }
-
-  void setCategory(int categoryNumber) {
-    this.categoryNumber = categoryNumber;
-  }
-
   //Methods
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{
