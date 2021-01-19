@@ -8,7 +8,6 @@ class ProfileScreen extends StatefulWidget {
   _ProfileScreenState createState() => _ProfileScreenState();
 }
 
-//====================================================
 //Categories list object
 CategoriesList categoriesList = new CategoriesList();
 bool wasAdded = false;
@@ -43,8 +42,6 @@ void simulation() {
   wasAdded = true;
   print('${categoriesList.categoriesList[2].invoiceList}');
 }
-//====================================================
-
 
 class _ProfileScreenState extends State<ProfileScreen> {
 
@@ -73,7 +70,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
       body: Container(
         height: size.height,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+
+            //PieChart
             Container(
               color: Colors.white,
               child: PieChart(
@@ -85,6 +85,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 )
               ),
             ),
+
+            //PieChart legend
             Container(
               color: Colors.white,
               child: Column(
@@ -147,6 +149,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
+  //PieChart
   List<PieChartSectionData> showSections(CategoriesList categoriesList) {
     return List.generate(4, (index) {
       switch (index) {

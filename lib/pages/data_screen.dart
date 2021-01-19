@@ -7,46 +7,8 @@ class DataScreen extends StatefulWidget {
   @override
   _DataScreenState createState() => _DataScreenState();
 }
-
-//====================================================
-// //Categories list object
-// CategoriesList categoriesList = new CategoriesList();
-// bool wasAdded = false;
-// //simulation method
-// void simulation() {
-//   //Invoice List
-//   List<Invoice> invoiceList = [
-//     new Invoice(100, 23, '10-10-2020', 0),
-//     new Invoice(500, 7, '10-10-2020', 1),
-//     new Invoice(1000, 0, '10-10-2020', 3),
-//     new Invoice(34, 23, '10-10-2020', 0),
-//     new Invoice(2375, 7, '10-10-2020', 2),
-//     new Invoice(75.43, 23, '10-10-2020', 2),
-//     new Invoice(300, 23, '10-10-2020', 1),
-//     new Invoice(200, 8, '10-10-2020', 0),
-//     new Invoice(100, 23, '10-10-2020', 0),
-//     new Invoice(500, 7, '10-10-2020', 1),
-//     new Invoice(1000, 0, '10-10-2020', 3),
-//     new Invoice(34, 23, '10-10-2020', 0),
-//     new Invoice(2375, 7, '10-10-2020', 2),
-//     new Invoice(75.43, 23, '10-10-2020', 2),
-//     new Invoice(300, 23, '10-10-2020', 1),
-//     new Invoice(200, 8, '10-10-2020', 0),
-//     new Invoice(534.76, 23, '21-09-2015', 1),
-//   ];
-//
-//   if (wasAdded != true) {
-//     for (int i = 0; i < invoiceList.length; i++) {
-//       categoriesList.categoriesList[invoiceList[i].categoryNumber].addInvoice(invoiceList[i]);
-//     }
-//   }
-//   wasAdded = true;
-//   print('${categoriesList.categoriesList[2].invoiceList}');
-// }
-//====================================================
-
-
-//Category List (fromDatabase)
+//Database simulation:
+//Category List
 List<Category> categoryList = [
   new Category(0, 'No Category'),
   new Category(1, 'Food'),
@@ -75,10 +37,8 @@ List<Invoice> invoiceList = [
 
 class _DataScreenState extends State<DataScreen> {
 
-
   @override
   Widget build(BuildContext context) {
-    // final Size size = MediaQuery.of(context).size;
 
     return Scaffold(
       body: CustomScrollView(
@@ -105,7 +65,8 @@ class _DataScreenState extends State<DataScreen> {
                         padding: const EdgeInsets.all(8.0),
                         child: CircleAvatar(
                           radius: 25,
-                          backgroundImage: invoiceList[index].photo == null? AssetImage('assets/no_image.png') : invoiceList[index].photo,
+                          backgroundImage: invoiceList[index].photo == null?
+                          AssetImage('assets/no_image.png') : invoiceList[index].photo,
                         ),
                       ),
 

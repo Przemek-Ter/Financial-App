@@ -11,7 +11,7 @@ class AddButton extends StatefulWidget {
   _AddButtonState createState() => _AddButtonState();
 }
 
-//Category List (from Database)
+//Category List
 List<Category> categoryList = [
   new Category(0, 'No Category'),
   new Category(1, 'Food'),
@@ -19,13 +19,12 @@ List<Category> categoryList = [
   new Category(3, 'Materials'),
 ];
 
-//Invoice
+//Temporary Invoice
 Category tmpCategory = new Category(1, 'Category 1');
 Invoice invoice = new Invoice(0, 0, 'No Date', 0);
 
 
 class _AddButtonState extends State<AddButton> {
-
 
   //Image Picker
   final picker = ImagePicker();
@@ -60,7 +59,6 @@ class _AddButtonState extends State<AddButton> {
       },
     );
   }
-
 
   void addDataMenu(context) {
     showModalBottomSheet(context: context, builder: (BuildContext bc) {
@@ -149,8 +147,7 @@ class _AddButtonState extends State<AddButton> {
                     ],
                     onChanged: (tmpNumber) {
                       invoice.categoryNumber = tmpNumber;
-                      print(
-                          'Category #$tmpNumber and named ${categoryList[tmpNumber].name} was pressed');
+                      print('Category #$tmpNumber and named ${categoryList[tmpNumber].name} was pressed');
                     }
                   ),
                 ),
@@ -235,5 +232,4 @@ class _AddButtonState extends State<AddButton> {
       );
     });
   }
-
 }

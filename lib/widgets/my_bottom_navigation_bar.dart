@@ -1,10 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-//Dependencies
 import 'package:project_app2/widgets/add_button.dart';
-
-//Pages
 import 'package:project_app2/pages/profile_screen.dart';
 import 'package:project_app2/pages/data_screen.dart';
 
@@ -26,6 +22,7 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       //Page field
       body: pagesList[currentPage],
 
@@ -54,5 +51,4 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
-
 }

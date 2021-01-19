@@ -7,7 +7,7 @@ class Invoice {
   String date;
   File photo;
 
-  Invoice(this.amountValue, this.taxValue, this.date, this.categoryNumber,{this.photo});
+  Invoice(this.amountValue, this.taxValue, this.date, this.categoryNumber, {this.photo});
 
   //Methods
   Map<String, dynamic> toMap() {
