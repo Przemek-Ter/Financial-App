@@ -4,11 +4,9 @@ import 'package:project_app2/object_classes/categories_list.dart';
 
 CategoriesList categoriesList;
 
-
 void main() {
 
   runApp(MaterialApp(
     home: MyBottomNavigationBar(),
   ));
 }
-
