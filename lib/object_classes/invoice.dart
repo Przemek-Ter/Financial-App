@@ -1,17 +1,19 @@
 import 'dart:io';
 
 class Invoice {
+  int indexNumber;
   double amountValue;
   int taxValue;
   int categoryNumber;
   String date;
   File photo;
 
-  Invoice(this.amountValue, this.taxValue, this.date, this.categoryNumber, {this.photo});
+  Invoice(this.indexNumber, this.amountValue, this.taxValue, this.date, this.categoryNumber, {this.photo});
 
   //Methods
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{
+      'indexNumber' : indexNumber,
       'amountValue': amountValue,
       'taxValue': taxValue,
       'categoryNumber': categoryNumber,
@@ -22,6 +24,7 @@ class Invoice {
   }
 
   Invoice.fromMap(Map<String, dynamic> map) {
+    indexNumber = map['indexNumber'];
     amountValue = map['amountValue'];
     taxValue = map['taxValue'];
     categoryNumber = map['categoryNumber'];
@@ -31,6 +34,6 @@ class Invoice {
 
   @override
   String toString() {
-    return 'Invoice{amountValue: $amountValue, taxValue: $taxValue, date: $date, categoryNumber: $categoryNumber';
+    return 'Invoice{indexNumber: $indexNumber, amountValue: $amountValue, taxValue: $taxValue, date: $date, categoryNumber: $categoryNumber';
   }
 }

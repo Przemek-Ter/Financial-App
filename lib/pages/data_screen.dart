@@ -17,22 +17,22 @@ List<Category> categoryList = [
 ];
 //Invoice List
 List<Invoice> invoiceList = [
-  new Invoice(100, 23, '10-10-2020', 0),
-  new Invoice(500, 7, '10-10-2020', 1),
-  new Invoice(1000, 0, '10-10-2020', 3),
-  new Invoice(34, 23, '10-10-2020', 0),
-  new Invoice(2375, 7, '10-10-2020', 2),
-  new Invoice(75.43, 23, '10-10-2020', 2),
-  new Invoice(300, 23, '10-10-2020', 1),
-  new Invoice(200, 8, '10-10-2020', 0),
-  new Invoice(100, 23, '10-10-2020', 0),
-  new Invoice(500, 7, '10-10-2020', 1),
-  new Invoice(1000, 0, '10-10-2020', 3),
-  new Invoice(34, 23, '10-10-2020', 0),
-  new Invoice(2375, 7, '10-10-2020', 2),
-  new Invoice(75.43, 23, '10-10-2020', 2),
-  new Invoice(300, 23, '10-10-2020', 1),
-  new Invoice(200, 8, '10-10-2020', 0),
+  new Invoice(1, 100, 23, '10-10-2020', 0),
+  new Invoice(2, 500, 7, '10-10-2020', 1),
+  new Invoice(3, 1000, 0, '10-10-2020', 3),
+  new Invoice(4, 34, 23, '10-10-2020', 0),
+  new Invoice(5, 2375, 7, '10-10-2020', 2),
+  new Invoice(6, 75.43, 23, '10-10-2020', 2),
+  new Invoice(7, 300, 23, '10-10-2020', 1),
+  new Invoice(8, 200, 8, '10-10-2020', 0),
+  new Invoice(9, 100, 23, '10-10-2020', 0),
+  new Invoice(10, 500, 7, '10-10-2020', 1),
+  new Invoice(11, 1000, 0, '10-10-2020', 3),
+  new Invoice(12, 34, 23, '10-10-2020', 0),
+  new Invoice(13, 2375, 7, '10-10-2020', 2),
+  new Invoice(14, 75.43, 23, '10-10-2020', 2),
+  new Invoice(15, 300, 23, '10-10-2020', 1),
+  new Invoice(16, 200, 8, '10-10-2020', 0),
 ];
 
 class _DataScreenState extends State<DataScreen> {

@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:date_time_picker/date_time_picker.dart';
-import 'package:project_app2/main.dart';
 import 'package:project_app2/object_classes/category.dart';
 import 'package:project_app2/object_classes/invoice.dart';
 import 'package:image_picker/image_picker.dart';
@@ -11,6 +10,7 @@ class AddButton extends StatefulWidget {
   _AddButtonState createState() => _AddButtonState();
 }
 
+//Database simulation:
 //Category List
 List<Category> categoryList = [
   new Category(0, 'No Category'),
@@ -18,11 +18,28 @@ List<Category> categoryList = [
   new Category(2, 'Car'),
   new Category(3, 'Materials'),
 ];
+//Invoice List
+List<Invoice> invoiceList = [
+  new Invoice(1, 100, 23, '10-10-2020', 0),
+  new Invoice(2, 500, 7, '10-10-2020', 1),
+  new Invoice(3, 1000, 0, '10-10-2020', 3),
+  new Invoice(4, 34, 23, '10-10-2020', 0),
+  new Invoice(5, 2375, 7, '10-10-2020', 2),
+  new Invoice(6, 75.43, 23, '10-10-2020', 2),
+  new Invoice(7, 300, 23, '10-10-2020', 1),
+  new Invoice(8, 200, 8, '10-10-2020', 0),
+  new Invoice(9, 100, 23, '10-10-2020', 0),
+  new Invoice(10, 500, 7, '10-10-2020', 1),
+  new Invoice(11, 1000, 0, '10-10-2020', 3),
+  new Invoice(12, 34, 23, '10-10-2020', 0),
+  new Invoice(13, 2375, 7, '10-10-2020', 2),
+  new Invoice(14, 75.43, 23, '10-10-2020', 2),
+  new Invoice(15, 300, 23, '10-10-2020', 1),
+  new Invoice(16, 200, 8, '10-10-2020', 0),
+];
 
 //Temporary Invoice
-Category tmpCategory = new Category(1, 'Category 1');
-Invoice invoice = new Invoice(0, 0, 'No Date', 0);
-
+Invoice invoice = new Invoice(0, 0, 0, 'No Date', 0);
 
 class _AddButtonState extends State<AddButton> {
 
@@ -133,16 +150,20 @@ class _AddButtonState extends State<AddButton> {
                     value: invoice.categoryNumber,
                     items: [
                       DropdownMenuItem(
-                        child: Text('Category'),
+                        child: Text('${categoryList[0].name}'),
                         value: 0,
                       ),
                       DropdownMenuItem(
-                        child: Text('Category 1'),
+                        child: Text('${categoryList[1].name}'),
                         value: 1,
                       ),
                       DropdownMenuItem(
-                        child: Text('Category 2'),
+                        child: Text('${categoryList[2].name}'),
                         value: 2,
+                      ),
+                      DropdownMenuItem(
+                        child: Text('${categoryList[3].name}'),
+                        value: 3,
                       ),
                     ],
                     onChanged: (tmpNumber) {
@@ -218,8 +239,10 @@ class _AddButtonState extends State<AddButton> {
                 child: Text('SUBMIT'),
                 color: Colors.blue,
                 onPressed: () {
-                  //Add to category
-                  categoriesList.addToCategory(invoice, invoice.categoryNumber);
+                  //Add to database
+                  invoice.indexNumber = invoiceList.length + 1;
+                  invoiceList.add(invoice);
+                  categoryList[invoice.categoryNumber].addInvoice(invoice);
                   //Print in Terminal
                   print(invoice.toString());
                   //Exit popup menu
