@@ -178,7 +178,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   double amountSum(Category category) {
-    double sum;
+    double sum = 0;
     if (category.invoiceNumber != null) {
       for (int i = 0; i < category.invoiceNumber.length; i++) {
         sum += invoiceList[category.invoiceNumber[i]].amountValue;
@@ -197,5 +197,4 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
     return double.parse(((categorySum / allSum) * 100).toStringAsPrecision(2));
   }
-
 }

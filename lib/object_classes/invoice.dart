@@ -10,7 +10,6 @@ class Invoice {
 
   Invoice(this.indexNumber, this.amountValue, this.taxValue, this.date, this.categoryNumber, {this.photo});
 
-  //Methods
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{
       'indexNumber' : indexNumber,
@@ -34,6 +33,7 @@ class Invoice {
 
   @override
   String toString() {
-    return 'Invoice{indexNumber: $indexNumber, amountValue: $amountValue, taxValue: $taxValue, date: $date, categoryNumber: $categoryNumber';
+    return 'Invoice{indexNumber: $indexNumber, amountValue: $amountValue, '
+        'taxValue: $taxValue, date: $date, categoryNumber: $categoryNumber';
   }
 }
